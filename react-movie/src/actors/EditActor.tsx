@@ -8,6 +8,7 @@ export default function EditActor() {
         model={{
           name: "Tom Holland",
           dateOfBirth: new Date("1996-05-01T00:00:00"),
+          pictureURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Thomas_Edison2.jpg/220px-Thomas_Edison2.jpg'
         }}
         onSubmit={(values) => console.log(values)}
       />
