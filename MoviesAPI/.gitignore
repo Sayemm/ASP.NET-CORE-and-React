@@ -1,0 +1,8 @@
+*.txt
+*.exe
+*.suo
+*.dll
+*.sentinel
+*.sentinel
+*.csproj
+*.vsidx
