@@ -3,6 +3,6 @@
 *.suo
 *.dll
 *.sentinel
-*.vs
-*.pack
+MoviesAPI/.vs/MoviesAPI/v17/.suo
+MoviesAPI/MoviesAPI/obj/staticwebassets.pack.sentinel
 *.csproj
