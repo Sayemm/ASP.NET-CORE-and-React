@@ -6,6 +6,7 @@ using MoviesAPI.Services;
 namespace MoviesAPI.Controllers
 {
     [Route("api/genres")]
+    [ApiController]
     public class GenresController: ControllerBase
     {
         private readonly IRepository _repository;
@@ -26,11 +27,6 @@ namespace MoviesAPI.Controllers
         [HttpGet("{Id:int}")]
         public ActionResult<Genre> Get(int Id, [BindRequired] string name)
         {
-            if(!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var genre = _repository.GetGenreById(Id);
             
             if(genre == null)

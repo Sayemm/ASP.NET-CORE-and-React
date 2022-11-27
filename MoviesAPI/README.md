@@ -30,3 +30,14 @@ method that returns any result.
 03. Query Strings: `api/genres?id=5&name=sayem` -> Route values: `public void Get(int Id, string name)`.
 04. Form Values `public void Post([Frombody] Genre value)`.
 05. Model Binder Configurations: BindRequired, BindNever.
+
+## Model Validation
+01. Required
+02. StringLength
+03. Range
+04. CreditCard
+05. Compare
+06. Phone
+07. RegularExpressoin
+08. Url
+09. BindRequired
