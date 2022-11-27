@@ -3,3 +3,6 @@
 *.suo
 *.dll
 *.sentinel
+*.vs
+*.pack
+*.csproj
