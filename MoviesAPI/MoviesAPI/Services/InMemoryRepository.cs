@@ -14,8 +14,9 @@ namespace MoviesAPI.Services
             };
         }
 
-        public List<Genre> GetAllGenres()
+        public async Task<List<Genre>> GetAllGenres() //In future this method will return a Task -> List<Genre>
         {
+            await Task.Delay(3000); //Web server will handle any request in the meantime and after 3s it will come back here and continue the execution.
             return _genres;
         }
 

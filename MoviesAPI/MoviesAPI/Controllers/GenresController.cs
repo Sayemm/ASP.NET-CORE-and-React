@@ -17,40 +17,40 @@ namespace MoviesAPI.Controllers
         [HttpGet]                // domain/api/genres
         [HttpGet("list")]        // domain/api/genres/list
         [HttpGet("/allgenres")]  // domain/allgenres
-        public List<Genre> Get()
+        public async Task<ActionResult<List<Genre>>> Get()
         {
-            return _repository.GetAllGenres();
+            return  await _repository.GetAllGenres();
         }
 
         [HttpGet("{Id:int}")]
-        public Genre Get(int Id)
+        public ActionResult<Genre> Get(int Id)
         {
             var genre = _repository.GetGenreById(Id);
             
             if(genre == null)
             {
-                //return NotFound();
+                return NotFound();
             }
 
             return genre;
         }
 
         [HttpPost]
-        public void Post()
+        public ActionResult Post()
         {
-
+            return NoContent();
         }
 
         [HttpPut]
-        public void Put()
+        public ActionResult Put()
         {
-
+            return NoContent();
         }
 
         [HttpDelete]
-        public void Delete()
+        public ActionResult Delete()
         {
-            Console.WriteLine("Hello");
+            return NoContent();
         }
     }
 }
