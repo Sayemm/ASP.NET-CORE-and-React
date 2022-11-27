@@ -1,8 +1,0 @@
-*.txt
-*.exe
-*.suo
-*.dll
-*.sentinel
-MoviesAPI/.vs/MoviesAPI/v17/.suo
-MoviesAPI/MoviesAPI/obj/staticwebassets.pack.sentinel
-*.csproj
