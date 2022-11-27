@@ -41,3 +41,8 @@ method that returns any result.
 07. RegularExpressoin
 08. Url
 09. BindRequired
+
+
+## Custom Validation
+01. Attribure Validatoin: Attribute validation has the advantage of being able to be reused in different models and properties, but its goal is to validate a property, and not a complete model.
+02. Model Validation: Has the advantage of being able to access all the properties of a model to perform complex validation rules. But cannot be reused with other models.
