@@ -1,4 +1,4 @@
-namespace MoviesAPI
+namespace MoviesAPI.Entities
 {
     public class WeatherForecast
     {

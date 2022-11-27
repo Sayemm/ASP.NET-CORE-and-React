@@ -10,7 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //My Services
-//Wheever we ask IRepository service, the DI system serves an InMemoryRepository instance
+//Whenever we ask IRepository service, the DI system serves an InMemoryRepository instance
 builder.Services.AddSingleton<IRepository, InMemoryRepository>();
 
 var app = builder.Build();
