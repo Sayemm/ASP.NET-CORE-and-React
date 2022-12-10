@@ -25,7 +25,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet("{Id:int}")]
-        public ActionResult<Genre> Get(int Id, [BindRequired] string name)
+        public ActionResult<Genre> Get(int Id, [FromHeader] string name)
         {
             var genre = _repository.GetGenreById(Id);
             
@@ -40,6 +40,8 @@ namespace MoviesAPI.Controllers
         [HttpPost]
         public ActionResult Post([FromBody] Genre genre)
         {
+            _repository.AddGenre(genre);
+
             return NoContent();
         }
 

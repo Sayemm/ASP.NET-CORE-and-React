@@ -35,7 +35,7 @@ public async Task<List<Genre>> GetAllGenres() //In future this method will retur
 01. It allows us to map data form an HTTP request to parameters of an action.
 02. The value indicated in the routing rule is an example of a route value.
 03. Query Strings: `api/genres?id=5&name=sayem` -> Route values: `public void Get(int Id, string name)`.
-04. Form Values `public void Post([Frombody] Genre value)`.
+04. Form Values: `public void Post([Frombody] Genre value)`.
 05. Model Binder Configurations: BindRequired, BindNever.
 
 ## Model Validation
@@ -51,5 +51,18 @@ public async Task<List<Genre>> GetAllGenres() //In future this method will retur
 
 
 ## Custom Validation
-01. Attribure Validatoin: Attribute validation has the advantage of being able to be reused in different models and properties, but its goal is to validate a property, and not a complete model.
-02. Model Validation: Has the advantage of being able to access all the properties of a model to perform complex validation rules. But cannot be reused with other models.
+01. **Attribure Validation:** Attribute validation has the advantage of being able to be reused in different models and properties, but its goal is to validate a property, and not a complete model.
+02. **Model Validation:** Has the advantage of being able to access all the properties of a model to perform complex validation rules. But cannot be reused with other models.
+
+## Dependency Injection
+* When a class A uses class B, we say class B is a dependency of class A.
+* Tight coupling means little flexible dependence on other classes.
+```
+//My Services
+//Whenever we ask IRepository service, the DI system serves an InMemoryRepository instance
+builder.Services.AddSingleton<IRepository, InMemoryRepository>();
+```
+* Services may have different lifetimes. That is the time serves by the instance of a class.
+    * **services.AddTransient**: Wheneven a service is requested, a new instance of the class will be served.
+    * **services.AddScope**: Created one per same HTTP request.
+    * **services.AddSingleton**: Always same instance.
