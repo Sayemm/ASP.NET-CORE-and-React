@@ -23,13 +23,13 @@ method that returns any result.
 02. While function is executing, our web server - instead of waiting for it to end, better do other tasks in the meantime.
 03. There is performance cost when using asynchronous functions.
 04. They are ideal for when we **use a database** or do **operations with other web services**.
-"`
+```c#
 public async Task<List<Genre>> GetAllGenres() //In future this method will return a Task -> List<Genre>
 {
     await Task.Delay(3000); //Web server will handle any request in the meantime and after 3s it will come back here and continue the execution.
     return _genres;
 }
-"`
+```
 
 ## Model Binding
 01. It allows us to map data form an HTTP request to parameters of an action.
