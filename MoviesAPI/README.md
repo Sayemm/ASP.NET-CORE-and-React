@@ -57,7 +57,7 @@ public async Task<List<Genre>> GetAllGenres() //In future this method will retur
 ## Dependency Injection
 * When a class A uses class B, we say class B is a dependency of class A.
 * Tight coupling means little flexible dependence on other classes.
-```
+```c#
 //My Services
 //Whenever we ask IRepository service, the DI system serves an InMemoryRepository instance
 builder.Services.AddSingleton<IRepository, InMemoryRepository>();
