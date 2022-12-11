@@ -66,3 +66,8 @@ builder.Services.AddSingleton<IRepository, InMemoryRepository>();
     * **services.AddTransient**: Wheneven a service is requested, a new instance of the class will be served.
     * **services.AddScope**: Created one per same HTTP request.
     * **services.AddSingleton**: Always same instance.
+
+## Loggers
+* Logging means displaying messages in the console or saving the messages to a database.
+* ILogger service allows us to centralize the configuration of logging logic of our application.
+* 6 level of logging (Critical, Error, Warning, Information, Debug, Trace)
