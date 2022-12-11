@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using MoviesAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddResponseCaching();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -12,6 +14,7 @@ builder.Services.AddSwaggerGen();
 //My Services
 //Whenever we ask IRepository service, the DI system serves an InMemoryRepository instance
 builder.Services.AddSingleton<IRepository, InMemoryRepository>();
+builder.Services.AddAuthentication().AddJwtBearer();
 
 var app = builder.Build();
 
@@ -31,6 +34,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseResponseCaching();
+app.UseAuthentication();
 
 app.UseAuthorization();
 

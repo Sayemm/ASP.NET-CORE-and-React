@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MoviesAPI.Entities;
 using MoviesAPI.Services;
 
@@ -20,6 +22,8 @@ namespace MoviesAPI.Controllers
         [HttpGet]                // domain/api/genres
         [HttpGet("list")]        // domain/api/genres/list
         [HttpGet("/allgenres")]  // domain/allgenres
+        [ResponseCache(Duration = 60)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult<List<Genre>>> Get()
         {
             _logger.LogInformation("Getting all the genres");

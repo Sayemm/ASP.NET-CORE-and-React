@@ -81,3 +81,19 @@ builder.Services.AddSingleton<IRepository, InMemoryRepository>();
 * MVC is a middleware of the many there are.
 * The order of process is important. Such the authorization middleware must come before the MVC middleware.
 * Process goes from first one to last one and then returns from last one to first one.
+
+## Filters
+* Filters help us run code at certain times in the life cycle of processing an HTTP request.
+* Filters are useful when we need to execute logic in several acion of several controllers and we want to avoid having repeat code.
+* One of the most used filters is the authorization filter. This user allows us to block access to a resource when a user is not logged in.
+* This logic is not specific to a single action but multiple actions of a multiple controllers.
+* Filter Types
+    * Authorization Filters
+    * Resource Filters: Executed after authorization stage.
+    * Action Filters: Executed just before and after the execution of an Action. They can be used to manipulate the arguments sent into an action and of the information returned by them.
+    * Exception Filters: Executed when there was an exception not caught in a try catch during the execution of an action.
+    * Result Filters: Executed before and after the execution of an action result.
+* Filters can also be applied at the controller level in such a way that it applies to all the actions of controller. These filters are placed as attribures either in the actions of in the corresponding controller.
+* We can also apply filters at the level of the entire API. These are called global filters.
+* Global filters are applied to all the actions of all controllers of our project.
+* An example of a filter is cache response which serves to cache the response of an action.
