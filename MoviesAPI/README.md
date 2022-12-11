@@ -71,3 +71,13 @@ builder.Services.AddSingleton<IRepository, InMemoryRepository>();
 * Logging means displaying messages in the console or saving the messages to a database.
 * ILogger service allows us to centralize the configuration of logging logic of our application.
 * 6 level of logging (Critical, Error, Warning, Information, Debug, Trace)
+
+## Middleware
+* A HTTP request arrives at our web api and goes through an HTTP request pipeline.
+* A **pipe** is a chain of processes connected in such a way that the output of each element of the chain is the input of the next.
+* The request pipeline is a set of connected proecesses, which receives a HTTP request and processces to give some kind of result.
+* One of the process is MVC process where the controllers and actions are handled.
+* But this is not the only process. **We call each process middlewire**.
+* MVC is a middleware of the many there are.
+* The order of process is important. Such the authorization middleware must come before the MVC middleware.
+* Process goes from first one to last one and then returns from last one to first one.

@@ -15,6 +15,14 @@ builder.Services.AddSingleton<IRepository, InMemoryRepository>();
 
 var app = builder.Build();
 
+app.Map("/circuit", app =>
+{
+    app.Run(async context =>
+    {
+        await context.Response.WriteAsync("I am short circuting the pipeline");
+    });
+});
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
