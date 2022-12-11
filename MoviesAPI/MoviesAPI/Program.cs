@@ -1,7 +1,3 @@
-using Microsoft.AspNetCore.Authentication;
-using MoviesAPI.Filters;
-using MoviesAPI.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,9 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //My Services
-//Whenever we ask IRepository service, the DI system serves an InMemoryRepository instance
-builder.Services.AddSingleton<IRepository, InMemoryRepository>();
-builder.Services.AddTransient<MyActionFilter>();
+//Whenever we ask a service, the DI system serves an InMemoryRepository instance
 builder.Services.AddAuthentication().AddJwtBearer();
 
 var app = builder.Build();
@@ -37,7 +31,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseResponseCaching();
 app.UseAuthentication();
 
 app.UseAuthorization();

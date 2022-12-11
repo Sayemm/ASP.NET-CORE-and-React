@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MoviesAPI.Entities;
-using MoviesAPI.Filters;
-using MoviesAPI.Services;
 
 namespace MoviesAPI.Controllers
 {
@@ -9,59 +7,43 @@ namespace MoviesAPI.Controllers
     [ApiController]
     public class GenresController: ControllerBase
     {
-        private readonly IRepository _repository;
         private readonly ILogger _logger;
 
-        public GenresController(IRepository repository, ILogger<GenresController> logger)
+        public GenresController(ILogger<GenresController> logger)
         {
-            _repository = repository;
             _logger = logger;
         }
 
         [HttpGet]                // domain/api/genres
-        [HttpGet("list")]        // domain/api/genres/list
-        [HttpGet("/allgenres")]  // domain/allgenres
-        [ResponseCache(Duration = 60)]
-        [ServiceFilter(typeof(MyActionFilter))]
         public async Task<ActionResult<List<Genre>>> Get()
         {
             _logger.LogInformation("Getting all the genres");
-            return  await _repository.GetAllGenres();
+
+            return new List<Genre>() { new Genre() { Id = 1, Name = "Comedy"} };
         }
 
         [HttpGet("{Id:int}")]
-        public ActionResult<Genre> Get(int Id, [FromHeader] string name)
+        public ActionResult<Genre> Get(int Id)
         {
-            _logger.LogDebug("Get by Id method is executing.....");
-            var genre = _repository.GetGenreById(Id);
-            
-            if(genre == null)
-            {
-                _logger.LogWarning($"Genre with Id {Id} not found");
-                return NotFound();
-            }
-
-            return genre;
+            throw new NotImplementedException();
         }
 
         [HttpPost]
         public ActionResult Post([FromBody] Genre genre)
         {
-            _repository.AddGenre(genre);
-
-            return NoContent();
+            throw new NotImplementedException();
         }
 
         [HttpPut]
         public ActionResult Put([FromBody] Genre genre)
         {
-            return NoContent();
+            throw new NotImplementedException();
         }
 
         [HttpDelete]
         public ActionResult Delete()
         {
-            return NoContent();
+            throw new NotImplementedException();
         }
     }
 }
