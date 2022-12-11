@@ -88,11 +88,11 @@ builder.Services.AddSingleton<IRepository, InMemoryRepository>();
 * One of the most used filters is the authorization filter. This user allows us to block access to a resource when a user is not logged in.
 * This logic is not specific to a single action but multiple actions of a multiple controllers.
 * Filter Types
-    * Authorization Filters
-    * Resource Filters: Executed after authorization stage.
-    * Action Filters: Executed just before and after the execution of an Action. They can be used to manipulate the arguments sent into an action and of the information returned by them.
-    * Exception Filters: Executed when there was an exception not caught in a try catch during the execution of an action.
-    * Result Filters: Executed before and after the execution of an action result.
+    * **Authorization Filters**
+    * **Resource Filters**: Executed after authorization stage.
+    * **Action Filters**: Executed just before and after the execution of an Action. They can be used to manipulate the arguments sent into an action and of the information returned by them.
+    * **Exception Filters**: Executed when there was an exception not caught in a try catch during the execution of an action.
+    * **Result Filters**: Executed before and after the execution of an action result.
 * Filters can also be applied at the controller level in such a way that it applies to all the actions of controller. These filters are placed as attribures either in the actions of in the corresponding controller.
 * We can also apply filters at the level of the entire API. These are called global filters.
 * Global filters are applied to all the actions of all controllers of our project.
