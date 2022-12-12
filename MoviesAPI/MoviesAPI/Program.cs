@@ -12,6 +12,15 @@ builder.Services.AddSwaggerGen();
 //Whenever we ask a service, the DI system serves an InMemoryRepository instance
 builder.Services.AddAuthentication().AddJwtBearer();
 
+builder.Services.AddCors(options =>
+{
+    var frontendURL = builder.Configuration.GetValue<string>("frontend_url");
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins(frontendURL).AllowAnyMethod().AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
 app.Map("/circuit", app =>
@@ -31,10 +40,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors();
 app.UseAuthentication();
-
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.Run();
