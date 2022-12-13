@@ -14,6 +14,7 @@ import { useState } from "react";
 import { genreDTO } from "../genres/genres.model";
 import { movieTheaterDTO } from "../movietheaters/movieTheater.model";
 import TypeAheadActors from "../forms/TypeAheadActors";
+import { actorMovieDTO } from "../actors/actors.model";
 
 export default function MovieForm(props: movieFormProps) {
     const [selectedGenres, setSelectedGenres] = useState(
@@ -29,6 +30,7 @@ export default function MovieForm(props: movieFormProps) {
     const [nonSelectedMovieTheaters, setNonSelectedMovieTheaters] = useState(
         mapToModel(props.nonSelectedMovieTheaters)
     );
+    const [selectedActors, setSelectedActors] = useState(props.selectedActors);
 
     function mapToModel(
         items: { id: number; name: string }[]
@@ -89,7 +91,13 @@ export default function MovieForm(props: movieFormProps) {
                         }}
                     />
 
-                    <TypeAheadActors displayName="Actors" actors={[]} />
+                    <TypeAheadActors
+                        displayName="Actors"
+                        actors={selectedActors}
+                        onAdd={(actors) => {
+                            setSelectedActors(actors);
+                        }}
+                    />
 
                     <Button disabled={formikProps.isSubmitting} type="submit">
                         Save Changes
@@ -113,4 +121,5 @@ interface movieFormProps {
     nonSelectedGenres: genreDTO[];
     selectedMovieTheaters: movieTheaterDTO[];
     nonSelectedMovieTheaters: movieTheaterDTO[];
+    selectedActors: actorMovieDTO[];
 }

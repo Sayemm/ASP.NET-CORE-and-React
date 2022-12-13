@@ -37,14 +37,29 @@ export default function TypeAheadActors(props: typeAheadActorsProps) {
             <label>{props.displayName}</label>
             <Typeahead
                 id="typeahead"
-                onChange={(actor) => {
-                    console.log(actor);
-                }}
                 options={actors}
+                onChange={(selectedActors) => {
+                    if(selectedActors.length) {
+                        const actors = selectedActors as actorMovieDTO[];
+                        if (
+                            props.actors.findIndex((x) => x.id === actors[0].id) ===
+                            -1
+                        ) {
+                            props.onAdd([...props.actors, actors[0]])
+                        }
+                    }
+                    console.log(selectedActors);
+                }}
                 labelKey="name"
                 placeholder="Write the name of the actor..."
                 minLength={1}
+                flip={true}
             />
+            <ul className="list-group">
+                {props.actors.map((actor) => (
+                    <li key={actor.id}>{actor.name}</li>
+                ))}
+            </ul>
         </div>
     );
 }
@@ -52,4 +67,5 @@ export default function TypeAheadActors(props: typeAheadActorsProps) {
 interface typeAheadActorsProps {
     displayName: string;
     actors: actorMovieDTO[];
+    onAdd(actors: actorMovieDTO[]): void;
 }
