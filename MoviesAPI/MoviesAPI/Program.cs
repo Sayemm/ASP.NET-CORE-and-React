@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using MoviesAPI;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +15,10 @@ builder.Services.AddSwaggerGen();
 //Whenever we ask a service, the DI system serves an InMemoryRepository instance
 builder.Services.AddAuthentication().AddJwtBearer();
 
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 builder.Services.AddCors(options =>
 {
     var frontendURL = builder.Configuration.GetValue<string>("frontend_url");
